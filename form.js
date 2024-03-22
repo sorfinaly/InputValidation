@@ -19,5 +19,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 function back(){
-    window.location.href = "form1.html";
+    window.location.href = "form.html";
 }

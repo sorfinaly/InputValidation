@@ -71,8 +71,8 @@
         // Retrieve and sanitize form inputs
         $name = validateInput($_POST["name"], '/^[A-Za-z ]+$/');
         $matricno = validateInput($_POST["matricno"], '/^\d{7}$/');
-        $curraddress = validateInput($_POST["curraddress"], '/^[A-Za-z0-9 \/\-.,]+$/');
-        $homeaddress = validateInput($_POST["homeaddress"], '/^[A-Za-z0-9 \/\-.,]+$/');
+        $curraddress = validateInput($_POST["curraddress"], '/^[A-Za-z0-9/\s,\-.]+$/');
+        $homeaddress = validateInput($_POST["homeaddress"], '/^[A-Za-z0-9/\s,\-.]+$/');
         $mobilephone = validateInput($_POST["mobilephone"], '/^\d{3}-\d{3}-\d{4}$/');
         $homephone = validateInput($_POST["homephone"], '/^\d{3}-\d{3}-\d{4}$/');
 

@@ -129,23 +129,23 @@ textarea.form__input {
     </p>
     <div class="form__item">
       <label for="name" class="form__label">Name (Legal/Office): </label>
-      <input type="text" class="form__input" name="name" id="name" pattern="[A-Za-z\s]+" placeholder="Ali bin Adam">
+      <input type="text" class="form__input" name="name" id="name" pattern="[A-Za-z\s]+" placeholder="Ali bin Adam" required  >
       <span class="form__error">Only alphabets are allowed</span>
     </div>
     <div class="form__item">
       <label for="matricno" class="form__label">Matric Number: </label>
-      <input type="text" class="form__input form__input--small" name="matricno" id="matricno" pattern="^\d{7}$" placeholder="eg: XXXXXXX">
+      <input type="text" class="form__input form__input--small" name="matricno" id="matricno" pattern="^\d{7}$" placeholder="eg: XXXXXXX" required>
       <span class="form__error">eg: 2017347</span>
     </div>
     <div class="form__item">
         <label for="curraddress" class="form__label">Current Address: </label>
-        <textarea maxlength="100" class="form__input" name="curraddress" id="curraddress"></textarea>
+        <textarea maxlength="100" class="form__input" name="curraddress" id="curraddress" pattern="^[A-Za-z0-9/\s,\-.]+$" required></textarea>
         <span class="form__error">A sample error message</span>
     </div>
     
     <div class="form__item">
       <label for="homeaddress" class="form__label">Home Address: </label>
-      <textarea maxlength="100" class="form__input" name="homeaddress" id="homeaddress"></textarea>
+      <textarea maxlength="100" class="form__input" name="homeaddress" id="homeaddress" pattern="^[A-Za-z0-9/\s,\-.]+$" required></textarea>
       <span class="form__error">A sample error message</span>
     </div>
     <div class="form__item">

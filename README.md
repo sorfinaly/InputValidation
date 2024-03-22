@@ -1,8 +1,6 @@
 # InputValidation
 
-# Student Details Form
-
-This project implements a student details form using HTML, CSS, JavaScript, and PHP. It allows users to input their personal details, validates the input data both client-side and server-side, and displays the submitted information by the students.
+This assignment implements a student details form using HTML, CSS, JavaScript, and PHP. It allows users to input their personal details, validates the input data both client-side and server-side, and displays the submitted information by the students.
 
 ## File Descriptions
 

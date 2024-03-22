@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+
+</style>
+
+<title>Reservation</title>
+</head>
+<body>
+
+    <h1>Reservation</h1>
+
+    <form method="post" action="form.php"> 
+      <label for="firstname" >First name: </label>
+      <input type="text" id="firstname" name="firstname" pattern="[A-Za-z\s]+" placeholder="Enter your first name" required><br>
+      <label for="lastname" >Last name: </label>
+      <input type="text" id="lastname" name="lastname" pattern="[A-Za-z\s]+" placeholder="Enter your last name" required><br>
+      <label for="email" >Email: </label>
+      <input type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="example@example.com" required><br>
+      <label for="phone" >Phone: </label>
+      <input type="tel" id="phone" name="phone" pattern="\d{3}[\-]\d{3}[\-]\d{4}" placeholder="XXX-XXX-XXXX" required><br>
+      <label for="date" >Date: </label>
+      <input type="date" id="date" name="date" placeholder="YYYY-MM-DD" required><br>
+      <label for="time" >Time: </label>
+      <input type="time" id="time" name="time" placeholder="HH:MM" required><br>
+      <label for="guests" >Number of guests: </label>
+      <input type="number" id="guests" name="guests" min="1" placeholder="Enter number of guests" required><br>
+      <label for="type" >Outdoor/Indoor: </label>
+      <select id="type" name="type" required>
+        <option value="outdoor">Outdoor</option>
+        <option value="indoor">Indoor</option>
+      </select><br>
+  
+      <input type="submit" value="submit">
+
+  </form>
+
+  <script src="form.js"></script>
+  
+</body>
+</html>

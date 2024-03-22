@@ -1,67 +1,113 @@
-<?php
-// Retrieve form data
-$firstname = $_POST['firstname'];
-$lastname = $_POST['lastname'];
-$email = $_POST['email'];
-$phone = $_POST['phone'];
-$date = $_POST['date'];
-$time = $_POST['time']; 
-$guests = $_POST['guests'];
-$type = $_POST['type'];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Details</title>
 
-// Validation using regular expressions
-$namePattern = '/^[A-Za-z\s]+$/';
-$emailPattern = '/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/';
-$phonePattern = '/^[0-9]{10}$/';
-$datePattern = '/^[0-9]{2}-[0-9]{2}-[0-9]{4}$/';
-$timePattern = '/^[0-9]{2}:[0-9]{2}$/';
-$guestsPattern = '/^[0-9]+$/';
-$typePattern = '/^[A-Za-z\s]+$/';
-
-
-// Validate name
-if (!preg_match($namePattern, $firstname)) { 
-    // Store error message
-    $errors['firstname'] = "Please enter a valid name.";
+<style>
+.response-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
-else if (!preg_match($namePattern, $lastname)) {
-    // Store error message
-    $errors['lastname'] = "Please enter a valid name.";
+.response-content {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: left;
+  padding: 20px;
+  border: 2px solid #000;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8); /* Transparent background */
 }
 
-else if (!preg_match($emailPattern, $email)) {
-    $errors['email'] = "Please follow this format: example@example.com";
-} 
-
-else if(!preg_match($phonePattern, $phone)) {
-    $errors['phone'] = "Please enter a valid phone number.";
+.response-content table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 1.2em;
 }
 
-else if(!preg_match($datePattern, $date)) {
-    $errors['date'] = "Please enter a valid date.";
+.response-content td {
+  border: 1px solid transparent; /* Transparent border */
+  padding: 8px;
+  text-align: left;
+}
+.form__btn {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
+  font-size: 1.1em;
+  padding: 10px 16px;
+  margin: 10px 0;
+
+  color: #ffffff;
+  background: #14b64a;
+  border: 2px solid #0fa942;
+  border-radius: 5px;
+
+  cursor: pointer;
+  outline: none;
 }
 
-else if(!preg_match($timePattern, $time)) {
-    $errors['time'] = "Please enter a valid time.";
+.form__btn:active {
+  background: #0fa942;
 }
 
-else if(!preg_match($guestsPattern, $guests)) {
-    $errors['guests'] = "Please enter a valid number of guests.";
-}
+</style>
 
-else if(!preg_match($typePattern, $type)) {
-    $errors['type'] = "Please enter a valid type.";
+</head>
+<body>
 
-}
+<div class="response-container">
+  <div class="response-content">
+    <h1>Student Details</h1>
+
+    <?php
+    // Check if form is submitted
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Retrieve and sanitize form inputs
+        $name = validateInput($_POST["name"], '/^[A-Za-z ]+$/');
+        $matricno = validateInput($_POST["matricno"], '/^\d{7}$/');
+        $curraddress = validateInput($_POST["curraddress"], '/^[A-Za-z0-9 \/\-.,]+$/');
+        $homeaddress = validateInput($_POST["homeaddress"], '/^[A-Za-z0-9 \/\-.,]+$/');
+        $mobilephone = validateInput($_POST["mobilephone"], '/^\d{3}-\d{3}-\d{4}$/');
+        $homephone = validateInput($_POST["homephone"], '/^\d{3}-\d{3}-\d{4}$/');
+
+        // Display user inputs in a table
+        echo "<table>";
+        echo "<tr><td>Name:</td><td>$name</td></tr>";
+        echo "<tr><td>Matric No:</td><td>$matricno</td></tr>";
+        echo "<tr><td>Current Address:</td><td>$curraddress</td></tr>";
+        echo "<tr><td>Home Address:</td><td>$homeaddress</td></tr>";
+        echo "<tr><td>Mobile Phone Number:</td><td>$mobilephone</td></tr>";
+        echo "<tr><td>Home Phone Number (Emergency):</td><td>$homephone</td></tr>";
+        echo "</table>";
+    } else {
+        echo "<p>No form submission detected.</p>";
+    }
+
+    // Function to validate input using preg_match
+    function validateInput($input, $pattern) {
+        $validated_input = htmlspecialchars($input); // Sanitize input
+        if (preg_match($pattern, $validated_input)) {
+            return $validated_input;
+        } else {
+            return "Invalid input";
+        }
+    }
+    ?>
+    
+    <div class="form__item">
+      <button class="form__btn" onclick="back()">Back</button>
+    </div>
+  </div>
+</div>
 
 
-// If there are no errors, process the form data further
-if (empty($errors)) {
-    // Process form data, such as saving to a database
-    echo "Form submitted successfully!";
-} else {
-    // Send error messages back to client-side JavaScript
-    echo json_encode($errors);
-}
-?>
+<script src="form.js"></script>
+
+</body>
+</html>

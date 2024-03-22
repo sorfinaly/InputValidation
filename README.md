@@ -2,7 +2,7 @@
 
 # Student Details Form
 
-This project implements a student details form using HTML, CSS, JavaScript, and PHP. It allows users to input their personal details, validates the input data both client-side and server-side, and displays the submitted information in a tabular format.
+This project implements a student details form using HTML, CSS, JavaScript, and PHP. It allows users to input their personal details, validates the input data both client-side and server-side, and displays the submitted information by the students.
 
 ## File Descriptions
 
@@ -16,15 +16,15 @@ The JavaScript file enhances the validation process on the client-side. It liste
 
 ### 3. form.php
 
-This PHP file receives the form data submitted from `form.html` via a POST request. It performs server-side validation using `preg_match()` to ensure the submitted data meets specific criteria. If any validation fails, it stores user-friendly error messages in an array. After processing, it either displays the sanitized data in a tabular format on `form.html` or, if there are validation errors, sends them back to `form.html` to be displayed alongside the input fields.
+This PHP file receives the form data submitted from `form.html` via a POST request. It performs server-side validation using `preg_match()` to ensure the submitted data meets specific criteria. If any validation fails, it stores user-friendly error messages in an array. After processing, it either displays the sanitized data in a tabular format or, if there are validation errors, displays them alongside the input fields with a button to go back and correct the form.
 
 ## How the Files are Connected
 
-- **form.html** links to **form.js** to handle client-side validation.
-- **form.html** sends form data to **form.php** for server-side validation and processing.
-- **form.php** redirects back to **form.html** to display errors or processed data.
+- **form.html** incorporates **form.js** to handle client-side validation.
+- Upon form submission, **form.html** sends the form data to **form.php** for server-side validation and processing.
+- **form.php** handles the validation and processing of form data, displaying errors or processed data and a back button allows user to fix the error which redirect to **form.html**.
+
 
 ## Error Handling
 
-Both client-side and server-side validation are implemented to ensure a robust and user-friendly form submission process. Client-side validation provides immediate feedback to users, while server-side validation ensures data integrity and security.
-
+If there are validation errors, the error messages are displayed next to the respective input fields on `form.html`, providing clear feedback to the user. The form data is not cleared, allowing the user to correct the errors and resubmit the form. If the input is successfully validated, the sanitized data is displayed in a tabular format on the same page.

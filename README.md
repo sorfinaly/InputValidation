@@ -20,9 +20,9 @@ This PHP file receives the form data submitted from `form.html` via a POST reque
 
 ## How the Files are Connected
 
-- **form.html** incorporates **form.js** to handle client-side validation.
-- Upon form submission, **form.html** sends the form data to **form.php** for server-side validation and processing.
-- **form.php** handles the validation and processing of form data, displaying errors or processed data and a back button allows user to fix the error which redirect to **form.html**.
+- `form.html`incorporates `form.js` to handle client-side validation.
+- Upon form submission, `form.html` sends the form data to `form.php` for server-side validation and processing.
+- `form.php` handles the validation and processing of form data, displaying errors or processed data and a back button allows user to fix the error which redirect to `form.html`.
 
 
 ## Error Handling
